@@ -12,14 +12,15 @@ int main(void) {
         a[i] = k;
     }
 
-    for (int i = 0, j = 8; i <= 4 && j <= 11; i++, j++) {
-        int b = a[i];
-        int c = a[j];
-        a[i] = c;
-        a[j] = b;
+    for (int k = 0; k < 4; k++) {
+        int tmp = a[SIZE - 1];
+        for (int i = SIZE - 1; i > 0; i--) {
+            a[i] = a[i - 1];
+        }
+        a[0] = tmp;
     }
 
-    for (int i = 0; i < 12; i++) {
+    for (int i = 0; i < SIZE; i++) {
         printf("%d ", a[i]);
     }
 
