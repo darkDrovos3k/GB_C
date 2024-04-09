@@ -12,6 +12,8 @@ int main(void) {
 
     scanf_array(a, SIZE);
     sort_array(SIZE, a);
+
+    return 0;
 }
 
 void sort_array(int size, int a[]) {
