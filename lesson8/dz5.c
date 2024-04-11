@@ -17,7 +17,6 @@ int main(void) {
 }
 
 void change_max_min(int size, int a[]) {
-
     for (int i = 0; i < size ; i++) {
         for (int k = 0; k < size; k++) {
             if (a[i] > a[k]) {
