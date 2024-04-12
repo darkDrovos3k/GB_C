@@ -15,6 +15,7 @@ int main(void) {
     }
 
     fgets(s, 50, fp);
+    fclose(fp);
     reverse_A_B(s);
 
     return 0;
