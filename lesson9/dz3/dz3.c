@@ -25,8 +25,9 @@ int main(void) {
     }
 
     fgets(s, 50, fp);
-    fclose(fp);
     array_find_number(s, pfile);
+    fclose(fp);
+    fclose(pfile);
 
     return 0;
 }
@@ -54,8 +55,6 @@ void array_find_number(char a[], FILE *pfile) {
     for (int i = 0; i < count_num; i++) {
         fprintf(pfile, "%d ", num[i]);
     }
-
-    fclose(pfile);
 }
 
 int compare(const void *a, const void *b) {
