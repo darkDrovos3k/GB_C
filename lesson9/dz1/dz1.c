@@ -24,6 +24,7 @@ int main(void) {
     }
 
     fgets(s, 50, fp);
+    fclose(fp);
 
     array_word(s, 50, word1, word2);
     print_symbol(word1, word2);
@@ -86,4 +87,5 @@ void print_symbol(char a[], char b[]) {
         }
     }
     fprintf(pfile, "%s\n", symbol.array_s);
+    fclose(pfile);
 }
