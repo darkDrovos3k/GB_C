@@ -16,14 +16,14 @@ int main(void) {
     char word1[10];
     char word2[10];
 
-    FILE *fp = fopen("/Users/drovos3k/CLionProjects/GB/C/lesson9/dz1/file.txt", "r");
+    FILE *fp = fopen("file.txt", "r");
 
     if (fp == NULL) {
         printf("Ошибка открытия файла");
         exit(1);
     }
 
-    FILE *pfile = fopen("/Users/drovos3k/CLionProjects/GB/C/lesson9/dz1/outfile.txt", "a+");
+    FILE *pfile = fopen("outfile.txt", "a+");
 
     if (pfile == NULL) {
         printf("Ошибка открытия файла");
