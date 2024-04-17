@@ -2,26 +2,34 @@
 #include <stdlib.h>
 #include <string.h>
 
-void reverse_A_B(char a[]);
+void reverse_A_B(char a[], FILE *pfile);
 
 int main(void) {
     char s[50];
 
-    FILE *fp = fopen("/Users/drovos3k/CLionProjects/GB/C/lesson9/dz2/file.txt", "r");
+    FILE *fp = fopen("file.txt", "r");
 
     if (fp == NULL) {
         printf("Ошибка открытия файла");
         exit(1);
     }
 
+    FILE *pfile = fopen("outfile.txt", "w");
+
+    if (pfile == NULL) {
+        printf("Ошибка открытия файла");
+        exit(1);
+    }
+
     fgets(s, 50, fp);
+    reverse_A_B(s, pfile);
+
     fclose(fp);
-    reverse_A_B(s);
 
     return 0;
 }
 
-void reverse_A_B(char a[]) {
+void reverse_A_B(char a[], FILE *pfile) {
     for(int i = 0; i < strlen(a); i++) {
         if (a[i] == 'a') {
             a[i] = 'b';
@@ -37,6 +45,7 @@ void reverse_A_B(char a[]) {
         }
     }
 
-    puts(a);
+    fprintf(pfile, "%s", a);
+    fclose(pfile);
 }
 
