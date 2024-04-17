@@ -3,7 +3,7 @@
 #include <string.h>
 #include <ctype.h>
 
-void max_string_word(char a[], FILE *pfile);
+void max_word_string(char a[], FILE *pfile);
 
 
 int main(void) {
@@ -24,13 +24,13 @@ int main(void) {
     }
 
     fgets(s, 50, fp);
-    max_string_word(s, pfile);
+    max_word_string(s, pfile);
     fclose(fp);
 
     return 0;
 }
 
-void max_string_word(char a[], FILE *pfile) {
+void max_word_string(char a[], FILE *pfile) {
     int count_tmp = 0;
     char s_array[50];
     unsigned long size = strlen(a);
