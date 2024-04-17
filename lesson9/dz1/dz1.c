@@ -3,7 +3,7 @@
 #include <string.h>
 
 void array_word(char array[], int array_size, char a[], char b[]);
-void print_symbol(char a[], char b[]);
+void print_symbol(char a[], char b[], FILE *pfile);
 
 struct sym {
     char s;
@@ -16,9 +16,16 @@ int main(void) {
     char word1[10];
     char word2[10];
 
-    FILE *fp = fopen("file.txt", "r");
+    FILE *fp = fopen("/Users/drovos3k/CLionProjects/GB/C/lesson9/dz1/file.txt", "r");
 
     if (fp == NULL) {
+        printf("Ошибка открытия файла");
+        exit(1);
+    }
+
+    FILE *pfile = fopen("/Users/drovos3k/CLionProjects/GB/C/lesson9/dz1/outfile.txt", "a+");
+
+    if (pfile == NULL) {
         printf("Ошибка открытия файла");
         exit(1);
     }
@@ -27,7 +34,7 @@ int main(void) {
     fclose(fp);
 
     array_word(s, 50, word1, word2);
-    print_symbol(word1, word2);
+    print_symbol(word1, word2, pfile);
 
     return 0;
 }
@@ -59,33 +66,27 @@ void array_word(char array[], int array_size, char a[], char b[]) {
     }
 }
 
-void print_symbol(char a[], char b[]) {
+void print_symbol(char a[], char b[], FILE *pfile) {
     struct sym symbol = {0, 0, 0};
-
-    FILE *pfile = fopen("outfile.txt", "a+");
-
-    if (pfile == NULL) {
-        printf("Ошибка открытия файла");
-        exit(1);
-    }
 
     for (int i = 0; i < strlen(a); i++) {
         for (int k = 0; k < strlen(b); k++) {
             if (a[i] == b[k] && a[i] != symbol.s) {
                 symbol.s = a[i];
-                symbol.array_s[symbol.s_count] = a[i];
-                symbol.s_count++;
+                symbol.array_s[symbol.s_count++] = a[i];
+                symbol.array_s[symbol.s_count++] = ' ';
             }
             else if (a[i] == b[k] && a[i] == symbol.s) {
                 for (int j = 0; j < strlen(symbol.array_s); j++) {
                     if (symbol.array_s[j] == a[i]) {
                         symbol.array_s[j] = 0;
-                        --symbol.s_count;
+                        symbol.s_count -= 2;
                     }
                 }
             }
         }
     }
-    fprintf(pfile, "%s\n", symbol.array_s);
+
+    fprintf(pfile, "%s", symbol.array_s);
     fclose(pfile);
 }
