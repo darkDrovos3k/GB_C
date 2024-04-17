@@ -15,14 +15,14 @@ struct sym {
 int main(void) {
     char s[50];
 
-    FILE *fp = fopen("/Users/drovos3k/CLionProjects/GB/C/lesson9/dz4/file.txt", "r");
+    FILE *fp = fopen("file.txt", "r");
 
     if (fp == NULL) {
         printf("Ошибка открытия файла");
         exit(1);
     }
 
-    FILE *pfile = fopen("/Users/drovos3k/CLionProjects/GB/C/lesson9/dz4/outfile.txt", "w");
+    FILE *pfile = fopen("outfile.txt", "w");
 
     if (pfile == NULL) {
         printf("Ошибка открытия файла");
