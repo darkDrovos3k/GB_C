@@ -1,9 +1,5 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 #include <ctype.h>
-
-#define SIZE 50
+#include "dz3.h"
 
 
 int main(void) {
@@ -25,33 +21,10 @@ int main(void) {
     }
 
     fgets(string, SIZE, fp);
+    replace_exp(string, tmp, pfile);
 
-    unsigned long size = strlen(string) - 1;
-
-    for (int i = 0; 0 < size; size--) {
-        if (string[size] != '/') {
-            tmp[i++] = string[size];
-        }
-        else if (string[size] == '/') {
-            size += 1;
-            tmp[i] = '\0';
-            break;
-        }
-    }
-
-    char *res = malloc((size + 5) * sizeof(char));
-    memcpy(res, string, size);
-
-    for (int i = 0; i < strlen(tmp); i++) {
-        *(res + size++) = tmp[i];
-    }
-
-    strcat(res, ".html");
-
-    puts(res);
-    free(res);
-
-    fclose(pfile);
     fclose(fp);
+
+    return 0;
 }
 
