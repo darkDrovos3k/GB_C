@@ -3,7 +3,6 @@
 
 int data_array_sensor(FILE *fp, struct sensor data[]) {
     struct sensor d_sensor = {0, 0, 0, 0, 0, 0};
-//    struct sensor data[SIZE];
     char c[SIZE];
     int data_count = 0;
     int number_string = 1;
@@ -32,8 +31,8 @@ int data_array_sensor(FILE *fp, struct sensor data[]) {
 
         number_string++;
     }
-    print_data_array_sensor(data, data_count);
 
+    print_data_array_sensor(data, data_count);
     return data_count;
 }
 
@@ -59,27 +58,32 @@ static int error_scanf(struct sensor d_sensor, int d) {
         (d_sensor.temp < -99 || d_sensor.temp > 99)) {
         return 0;
     }
+
     return 1;
 }
 
 int max_temp_year(struct sensor data[], int data_size) {
     int max = 0;
+
     for (int i = 0; i < data_size; i++) {
         if (data[i].temp > max) {
             max = data[i].temp;
         }
     }
+
     printf("max_temp = %d\n", max);
     return max;
 }
 
 int min_temp_year(struct sensor data[], int data_size) {
     int min = 99;
-    for(int i = 0; i < data_size; i++) {
-        if(data[i].temp < min) {
+
+    for (int i = 0; i < data_size; i++) {
+        if (data[i].temp < min) {
             min = data[i].temp;
         }
     }
+
     printf("min_temp = %d\n", min);
     return min;
 }
@@ -88,15 +92,57 @@ int med_temp_year(struct sensor data[], int data_size) {
     int med_temp;
     int tmp = 0;
 
-    for(int i = 0; i < data_size; i++) {
+    for (int i = 0; i < data_size; i++) {
         tmp += data[i].temp;
     }
+
     med_temp = tmp / data_size;
-    printf("med_temp = %d", med_temp);
+    printf("med_temp = %d\n", med_temp);
     return med_temp;
 }
 
+int max_temp_month(struct sensor data[], int data_size, int month) {
+    int max_temp = -99;
 
+    for (int i = 0; i < data_size; i++) {
+        if (data[i].month == month && data[i].temp > max_temp) {
+            max_temp = data[i].temp;
+        }
+    }
+
+    printf("max_temp_month = %d\n", max_temp);
+    return max_temp;
+}
+
+int min_temp_month(struct sensor data[], int data_size, int month) {
+    int min_temp = 99;
+
+    for (int i = 0; i < data_size; i++) {
+        if (data[i].month == month && data[i].temp < min_temp) {
+            min_temp = data[i].temp;
+        }
+    }
+
+    printf("min_temp_manth = %d\n", min_temp);
+    return min_temp;
+}
+
+int med_temp_month(struct sensor data[], int data_size, int month) {
+    int med_temp;
+    int temp_count = 0;
+    int tmp = 0;
+
+    for (int i = 0; i < data_size; i++) {
+        if (data[i].month == month) {
+            tmp += data[i].temp;
+            temp_count++;
+        }
+    }
+
+    med_temp = tmp / temp_count;
+    printf("med_temp_month = %d\n", med_temp);
+    return med_temp;
+}
 
 
 

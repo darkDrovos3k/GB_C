@@ -8,7 +8,8 @@
 
 
 int main(void) {
-    int data_size = 0;
+    int data_size;
+    int month = 1;
     struct sensor data[SIZE];
 
     FILE *fp = fopen(T_FILE, "r");
@@ -22,5 +23,8 @@ int main(void) {
     max_temp_year(data, data_size);
     min_temp_year(data, data_size);
     med_temp_year(data, data_size);
+    max_temp_month(data, data_size, month);
+    min_temp_month(data, data_size, month);
+    med_temp_month(data, data_size, month);
 
 }

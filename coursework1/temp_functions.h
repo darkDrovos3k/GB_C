@@ -20,3 +20,6 @@ static int error_scanf(struct sensor d_sensor, int d);
 int max_temp_year(struct sensor data[], int size);
 int min_temp_year(struct sensor data[], int data_size);
 int med_temp_year(struct sensor data[], int data_size);
+int max_temp_month(struct sensor data[], int data_size, int month);
+int min_temp_month(struct sensor data[], int data_size, int month);
+int med_temp_month(struct sensor data[], int data_size, int month);
