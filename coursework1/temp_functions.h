@@ -1,19 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#define SIZE 20
-#define DEBUG 1
+#define SIZE 30
 
 
 struct sensor {
-    int temp;
-    unsigned int minute;
-    unsigned int hour;
-    unsigned int day;
-    unsigned int month;
+    short temp;
+    unsigned short minute;
+    unsigned short hour;
+    unsigned short day;
+    unsigned short month;
     unsigned int year;
 };
 
+int file_size_str(FILE *fp);
 int data_array_sensor(FILE *fp, struct sensor data[]);
 static void print_data_array_sensor(struct sensor data[], int count);
 static int error_scanf(struct sensor d_sensor, int d);

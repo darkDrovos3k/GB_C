@@ -8,7 +8,7 @@ int data_array_sensor(FILE *fp, struct sensor data[]) {
     int number_string = 1;
     int d;
 
-    while ((d = fscanf(fp, "%d;%d;%d;%d;%d;%d",
+    while ((d = fscanf(fp, "%d;%hd;%hd;%hd;%hd;%hd",
                        &d_sensor.year,
                        &d_sensor.month,
                        &d_sensor.day,
@@ -26,15 +26,14 @@ int data_array_sensor(FILE *fp, struct sensor data[]) {
             data_count++;
         } else {
             fscanf(fp, "%[^\n]", c);
-            printf("error data, number string = %d\n", number_string);
+            printf("Ошибка ввода данных в строке = %d\n", number_string);
+            printf("=================================\n");
         }
-
         number_string++;
     }
-
-    print_data_array_sensor(data, data_count);
     return data_count;
 }
+
 
 static void print_data_array_sensor(struct sensor data[], int data_count) {
     for (int i = 0; i < data_count; i++) {
@@ -58,12 +57,11 @@ static int error_scanf(struct sensor d_sensor, int d) {
         (d_sensor.temp < -99 || d_sensor.temp > 99)) {
         return 0;
     }
-
     return 1;
 }
 
 int max_temp_year(struct sensor data[], int data_size) {
-    int max = 0;
+    int max = -99;
 
     for (int i = 0; i < data_size; i++) {
         if (data[i].temp > max) {
@@ -71,7 +69,7 @@ int max_temp_year(struct sensor data[], int data_size) {
         }
     }
 
-    printf("max_temp = %d\n", max);
+    printf("Максимальная температура за год = %d\n", max);
     return max;
 }
 
@@ -84,7 +82,7 @@ int min_temp_year(struct sensor data[], int data_size) {
         }
     }
 
-    printf("min_temp = %d\n", min);
+    printf("Минимальная температура за год = %d\n", min);
     return min;
 }
 
@@ -97,7 +95,7 @@ int med_temp_year(struct sensor data[], int data_size) {
     }
 
     med_temp = tmp / data_size;
-    printf("med_temp = %d\n", med_temp);
+    printf("Средняя температура за год = %d\n", med_temp);
     return med_temp;
 }
 
@@ -110,7 +108,7 @@ int max_temp_month(struct sensor data[], int data_size, int month) {
         }
     }
 
-    printf("max_temp_month = %d\n", max_temp);
+    printf("Максимальная температура за месяц = %d\n", max_temp);
     return max_temp;
 }
 
@@ -123,7 +121,7 @@ int min_temp_month(struct sensor data[], int data_size, int month) {
         }
     }
 
-    printf("min_temp_manth = %d\n", min_temp);
+    printf("Минимальная температура за месяц = %d\n", min_temp);
     return min_temp;
 }
 
@@ -140,8 +138,20 @@ int med_temp_month(struct sensor data[], int data_size, int month) {
     }
 
     med_temp = tmp / temp_count;
-    printf("med_temp_month = %d\n", med_temp);
+    printf("Средняя температура за месяц = %d\n", med_temp);
     return med_temp;
+}
+
+int file_size_str(FILE *fp) {
+    int size_str = 0;
+
+    while (!feof(fp)) {
+        fscanf(fp, "%*[^\n]%*c");
+        size_str++;
+    }
+
+    fseek(fp, SEEK_SET, 0);
+    return size_str;
 }
 
 
