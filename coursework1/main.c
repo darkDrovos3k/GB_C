@@ -3,8 +3,6 @@
 #include <unistd.h>
 #include "temp_functions.h"
 
-//#define T_FILE "/Users/drovos3k/CLionProjects/GB/C/coursework1/temperature_small.csv"
-
 
 int main(int argc, char *argv[]) {
     FILE *fp;
