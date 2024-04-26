@@ -34,19 +34,6 @@ int data_array_sensor(FILE *fp, struct sensor data[]) {
     return data_count;
 }
 
-
-static void print_data_array_sensor(struct sensor data[], int data_count) {
-    for (int i = 0; i < data_count; i++) {
-        printf("%d;%d;%d;%d;%d;%d;\n",
-               data[i].year,
-               data[i].month,
-               data[i].day,
-               data[i].hour,
-               data[i].minute,
-               data[i].temp);
-    }
-}
-
 static int error_scanf(struct sensor d_sensor, int d) {
     if ((d < 6) ||
         (d_sensor.year < 1972 || d_sensor.year > 9999) ||
