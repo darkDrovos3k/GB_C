@@ -1,7 +1,7 @@
-all: sensor
+all: sensor_report
 
-sensor: main.o temp_functions.o
-	gcc -o sensor main.o temp_functions.o
+sensor_report: main.o temp_functions.o
+	gcc -o sensor_report main.o temp_functions.o
 
 main.o: main.c temp_functions.h
 	gcc -c -o main.o main.c
@@ -11,4 +11,4 @@ temp_functions.o: temp_functions.c
 
 clean:
 	rm *.o
-	rm sensor
+	rm sensor_report
