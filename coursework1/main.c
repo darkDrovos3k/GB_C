@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include "temp_functions.h"
 
-#define T_FILE "/Users/drovos3k/CLionProjects/GB/C/coursework1/temperature_small.csv"
+//#define T_FILE "/Users/drovos3k/CLionProjects/GB/C/coursework1/temperature_small.csv"
 
 
 int main(int argc, char *argv[]) {
@@ -23,9 +23,9 @@ int main(int argc, char *argv[]) {
                 printf("    -y вся статистика за год\n");
                 break;
             case 'f':
-                fp = fopen(T_FILE, "r");
+                fp = fopen(optarg, "r");
                 if (fp == NULL) {
-                    printf("Ошибка открытия файла %s\n", T_FILE);
+                    printf("Ошибка открытия файла %s\n", optarg);
                     exit(1);
                 }
                 size_str = file_size_str(fp);
