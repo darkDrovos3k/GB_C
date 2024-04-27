@@ -6,7 +6,7 @@
 
 int main(int argc, char *argv[]) {
     FILE *fp;
-    struct sensor *data = NULL;
+    struct sensor *data;
     int res;
     int data_size;
     int month = 0;
