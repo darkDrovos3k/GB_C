@@ -6,11 +6,11 @@
 
 int main(int argc, char *argv[]) {
     FILE *fp;
-    struct sensor *data = NULL;
+    struct sensor *data;
     int res;
     int data_size;
-    int month = 0;
-    int year = 0;
+    unsigned short month = 0;
+    unsigned int year = 0;
     unsigned int size_str;
 
     while ((res = getopt(argc, argv, "hf:m:y")) != -1) {
@@ -18,6 +18,7 @@ int main(int argc, char *argv[]) {
             case 'h':
                 printf("Программа sensor_report выводит среднюю, минимальную и максимальную температура за год/месяц\n");
                 printf("    -h справка\n");
+                printf("    -f <файл>\n");
                 printf("    -m <номер месяца> вся статистика за месяц\n");
                 printf("    -y вся статистика за год\n");
                 break;
@@ -65,6 +66,7 @@ int main(int argc, char *argv[]) {
         } else {
             printf("Программа sensor_report выводит среднюю, минимальную и максимальную температура за год/месяц\n");
             printf("    -h справка\n");
+            printf("    -f <файл>\n");
             printf("    -m <номер месяца> вся статистика за месяц\n");
             printf("    -y вся статистика за год\n");
         }
