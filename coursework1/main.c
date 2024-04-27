@@ -9,8 +9,8 @@ int main(int argc, char *argv[]) {
     struct sensor *data;
     int res;
     int data_size;
-    int month = 0;
-    int year = 0;
+    unsigned short month = 0;
+    unsigned int year = 0;
     unsigned int size_str;
 
     while ((res = getopt(argc, argv, "hf:m:y")) != -1) {
