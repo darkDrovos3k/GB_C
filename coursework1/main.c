@@ -63,14 +63,7 @@ int main(int argc, char *argv[]) {
                 free(data);
                 fclose(fp);
             }
-        } else {
-            printf("Программа sensor_report выводит среднюю, минимальную и максимальную температура за год/месяц\n");
-            printf("    -h справка\n");
-            printf("    -f <файл>\n");
-            printf("    -m <номер месяца> вся статистика за месяц\n");
-            printf("    -y вся статистика за год\n");
         }
-
-        return 0;
     }
+    return 0;
 }
